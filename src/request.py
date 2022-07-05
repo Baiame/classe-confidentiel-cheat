@@ -12,12 +12,12 @@ class Request:
     def run(self):
         with open(self.dictionary, "r", encoding="utf-8") as f:
             lines = f.readlines()
-            print(lines)
             k = 0
             # Loop in all words
             for word in tqdm(lines):
                 word = unidecode(word.lower().replace('\n', ''))    # Do some cleaning
                 request_url = self.url.replace("###", word)         # Append word to url
+                print(request_url)
                 r = requests.get(request_url)
                 if r.status_code == 200:
                     print(f"Found: {word}")
