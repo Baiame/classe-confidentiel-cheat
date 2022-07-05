@@ -17,7 +17,6 @@ class Request:
             for word in tqdm(lines):
                 word = unidecode(word.lower().replace('\n', ''))    # Do some cleaning
                 request_url = self.url.replace("###", word)         # Append word to url
-                print(request_url)
                 r = requests.get(request_url)
                 if r.status_code == 200:
                     print(f"Found: {word}")
